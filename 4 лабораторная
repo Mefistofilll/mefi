@@ -1,0 +1,19 @@
+class RangeLike:
+    def __init__(self, start, end):
+        self.current = start
+        self.end = end
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current >= self.end:
+            raise StopIteration
+        val = self.current
+        self.current += 1
+        return val
+
+
+# Пример использования
+for i in RangeLike(1, 5):
+    print(i, end=' ')  # Вывод: 1 2 3 4
