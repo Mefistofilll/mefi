@@ -1,0 +1,24 @@
+class PositiveValue:
+    def __init__(self):
+        self._value = {}
+
+    def __get__(self, instance, owner):
+        return self._value.get(instance)
+
+    def __set__(self, instance, value):
+        if value <= 0:
+            raise ValueError("Значение должно быть положительным")
+        self._value[instance] = value
+
+
+class Product:
+    price = PositiveValue()
+
+    def __init__(self, price):
+        self.price = price
+
+
+# Пример использования
+p = Product(100)
+print(p.price)  # Вывод: 100
+# p.price = -5  # Вызовет ValueError
