@@ -1,0 +1,8 @@
+def lazy_squares(n):
+    for i in range(n):
+        yield i * i
+
+
+# Пример использования
+for x in lazy_squares(10):
+    print(x, end=' ')  # Вывод: 0 1 4 9 16 25 36 49 64 81
